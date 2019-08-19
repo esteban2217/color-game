@@ -12,22 +12,12 @@ var modeButtons = document.querySelectorAll('.mode');
 init();
 
 function init(){
-    for(var i = 0; i < modeButtons.length; i++){
-        modeButtons[i].addEventListener('click', function(){
-            modeButtons[0].classList.remove('selected');
-            modeButtons[1].classList.remove('selected');
-            this.classList.add('selected');
-            this.textContent === 'Easy' ? numSquares = 3: numSquares = 6;
-           
-            // if(this.textContent === "easy"){
-            //     numSquares = 3;
-            // } else {
-            //     numSquares = 6;
-            // }
-            reset();
-    
-        })
-    }
+    setUpModeButtons();
+    setUpSquares();
+    reset();
+}
+
+function setUpSquares(){
     for(var i = 0; i<squares.length; i++){
         //add clikc listeners to squares
         squares[i].addEventListener('click', function(){
@@ -45,9 +35,25 @@ function init(){
         }
       })
     }
-    reset();
 }
-
+function setUpModeButtons(){
+    for(var i = 0; i < modeButtons.length; i++){
+        modeButtons[i].addEventListener('click', function(){
+            modeButtons[0].classList.remove('selected');
+            modeButtons[1].classList.remove('selected');
+            this.classList.add('selected');
+            this.textContent === 'Easy' ? numSquares = 3: numSquares = 6;
+           
+            // if(this.textContent === "easy"){
+            //     numSquares = 3;
+            // } else {
+            //     numSquares = 6;
+            // }
+            reset();
+    
+        })
+    }
+}
 function reset(){
 // generate all new color
 colors = generateRandomColors(numSquares);
